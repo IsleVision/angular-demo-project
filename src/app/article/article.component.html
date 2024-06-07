@@ -1,13 +1,24 @@
 <td width="300px">{{article.title}}</td>
 @if(isCollapsed){
     <td width="500px">{{article.body | slice:0:100 }}
-        <a style="cursor:pointer; color:blue" (click)="collapse()">more</a>
+        <a (click)="collapse()">more</a>
     </td>
 }
 @else {
     <td width="500px">{{article.body}}
-        <a style="cursor:pointer; color:blue" (click)="collapse()">less</a>
+        <a (click)="collapse()">less</a>
     </td>
 }
 
 <td><a [routerLink]="['/edit',article.id]">Edit</a></td>
+<td><a (click)="delConfirm.show()">Delete</a></td>
+
+<dialog #delConfirm>
+    <p>Do you confirm to delete this article?</p>
+    <button (click)="deleteArticle(article.id)">
+        Yes
+    </button> &nbsp;&nbsp;
+   <button (click)="delConfirm.close()">
+       Cancel
+    </button>
+ </dialog>

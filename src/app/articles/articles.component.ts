@@ -32,4 +32,8 @@ export class ArticlesComponent implements OnInit{
     });
   }
 
+  deleteArticle(id:number){
+    this.articles=this.articles.filter(e=>e.id!=id)
+  }
+
 }

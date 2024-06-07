@@ -10,12 +10,13 @@
         <th>Title</th>
         <th>Content</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
 </thead>
 <tbody>
     @for (article of articles;track article.id; let isodd=$odd ){
         <tr [class.odd]="isodd">
-            <app-article [article]="article"></app-article>
+            <app-article (delete)="deleteArticle($event)" [article]="article"></app-article>
         </tr>
     }
 </tbody>
