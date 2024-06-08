@@ -1,0 +1,25 @@
+
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <td id="title">Title</td>
+                    <td id="content">Content</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><textarea name="title" [(ngModel)]="article.title"></textarea></td>
+                    <td><textarea name="body" [(ngModel)]="article.body"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="flex">            
+                        <button (click)="submit()">Submit</button>
+                        <button (click)="cancel()">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+

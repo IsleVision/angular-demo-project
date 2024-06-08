@@ -1,0 +1,27 @@
+button {
+    margin: 5px;
+  }  
+
+#title {
+  width: 300px;
+}
+
+#content {
+  width: 350px;
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+textarea[name='title']{
+  height: 100px; 
+  width:200px
+}
+
+textarea[name='body']{
+  height: 100px; 
+  width:350px
+}

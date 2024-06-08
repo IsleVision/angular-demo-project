@@ -20,7 +20,6 @@ export class HttpService {
   }
 
   search(q: string): Observable<Article[]> {
-    console.log(q)
     if (!q || q === '*') {
       q = '';
     } else {

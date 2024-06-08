@@ -1,9 +1,14 @@
-<form>
+<div id="head">
     <div>
-        <label>Search  </label>
+        <label>Search</label>
         <input name="query" [(ngModel)]="query" (keyup)="search()">
     </div>
-  </form>
+    <div>
+        <button (click)="openAdd()">New Article</button>
+    </div>
+</div>
+
+
 <table>
 <thead>
     <tr>
@@ -13,11 +18,17 @@
         <th>Delete</th>
     </tr>
 </thead>
+<dialog [attr.open]="isAddOpen?'':null">
+    <h2>New Article</h2>
+    <app-edit-article (edit)="addArticle($event)"></app-edit-article>
+ </dialog>
 <tbody>
     @for (article of articles;track article.id; let isodd=$odd ){
         <tr [class.odd]="isodd">
-            <app-article (delete)="deleteArticle($event)" [article]="article"></app-article>
+            <app-article (delete)="deleteArticle($event)"  (edit)="editArticle($event)" [article]="article"></app-article>
         </tr>
     }
 </tbody>
 </table>
+
+

@@ -1,5 +1,8 @@
 <td width="300px">{{article.title}}</td>
-@if(isCollapsed){
+@if(!isCollapseNeed){
+    <td width="500px">{{article.body}}
+}
+@else if(isCollapsed){
     <td width="500px">{{article.body | slice:0:100 }}
         <a (click)="collapse()">more</a>
     </td>
@@ -10,7 +13,7 @@
     </td>
 }
 
-<td><a [routerLink]="['/edit',article.id]">Edit</a></td>
+<td><a (click)="openEdit(article.id)">Edit</a></td>
 <td><a (click)="delConfirm.show()">Delete</a></td>
 
 <dialog #delConfirm>
@@ -21,4 +24,9 @@
    <button (click)="delConfirm.close()">
        Cancel
     </button>
+ </dialog>
+
+ <dialog [attr.open]="isEditOpen?'':null">
+    <h2>Edit Article</h2>
+    <app-edit-article [articleId]="editArtId" (edit)="editArticle($event)"></app-edit-article>
  </dialog>
